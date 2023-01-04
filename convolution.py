@@ -11,7 +11,7 @@ def apply_convolution(img:np.array, kernel:np.array):
     
     # Create a new image of the size minus the border 
     # where the convolution can't be applied
-    new_img = np.zeros((height-kernel_height+1,width-kernel_width+1,3),dtype=np.uint8) 
+    new_img = np.zeros((height-kernel_height+1,width-kernel_width+1,3)) 
     
     # Loop through each pixel in the image
     for i in range(kernel_height//2, height-kernel_height//2-1):
@@ -34,6 +34,9 @@ def apply_convolution(img:np.array, kernel:np.array):
 if __name__ == "__main__":
     # Kernel to blur image
     kernel = np.array([[1,2,1],[2,4,2],[1,2,1]])*1/16
+    
+    # kernel to get the edges of an image
+    # kernel = np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])
     
     # Import image through PIL and convert to numpy array
     img = Image.open('city.jpg')
